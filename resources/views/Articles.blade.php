@@ -2,9 +2,9 @@
 
 @section('content')
 <ul>
-    @foreach ( $posts as $post )
+    @foreach ( $post as $posts )
 
-      <li>{{ $post->post_title }}</li>
+      <li>{{ $posts->post_content }}</li>
 
     @endforeach
     </ul>

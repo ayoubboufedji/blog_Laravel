@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Mail\ContactMessageCreated;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,10 +17,21 @@ Route::get('/', function () {
     return view('welcome');
 });*/
 
+
+
 Route::get('/', 'HomeController@index');
-
 Route::get('/Articles', 'ArticlesController@index');
+Route::get('/Articles/{post_name}', 'ArticlesController@show');
 
-Route::get('/Contact', 'ContactController@index');
+Route::get('/Contact', [
+    'as'=> 'contact_path',
+    'uses' => 'ContactController@create'
+    ] );
+
+Route::post('/Contact', [
+'as'=> 'contact_path',
+'uses' => 'ContactController@store'
+] );
+
 
 

@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class post extends Model
+class Post extends Model
 {   //
+    protected $table = 'posts';
 
  /**
     * Get the user that authored the post.
