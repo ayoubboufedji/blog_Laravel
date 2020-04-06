@@ -18,6 +18,7 @@ class ContactController extends Controller
 
     function store(ContactRequest $request) {
 
+        //store inthe database
         $email = $request['email'];
         $name = $request['name'];
         $msg =$request['message'];
@@ -29,8 +30,11 @@ class ContactController extends Controller
 
         $contact->save();
 
+        // send mail
         $mailable =  new ContactMessageCreated($request->name, $request->email, $request->message);
         Mail::to('ayoubboufedjitwi@gmail.com')->send($mailable);
+
+        //redirect
         return redirect('Contact')->with('message','Nous vous repondrons dans les plus bréfs delais!');
 }
 }

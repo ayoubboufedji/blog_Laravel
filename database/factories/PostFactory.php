@@ -1,8 +1,6 @@
 <?php
-
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
-
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -13,21 +11,17 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-
 $factory->define(App\Post::class, function (Faker $faker) {
-        $users = App\User::pluck('id')->toArray();
+    $users = App\User::pluck('id')->toArray();
     return [
-        'user_id' => $faker->randomElement($users),
+        'post_author' => $faker->randomElement($users),
+        'post_date' => now(),
         'post_content' => $faker->paragraph(),
-        'post_title' => $faker->title(),
-        'post_status' => $faker->title(),
-        'post_name' => $faker->name,
-        'post_type' => 'article',
-        'post_category' => $faker->name,
-        'updated_at'=>now(),
-        //'created_at'=>time(),
-       // 'post_type' => 'article',
-        //'usr_id' => factory('App\User')->create()->id,
+        //'slug' => $faker->text(),
+        'post_title' => $faker->sentence(),
+        'post_name' => $faker->word(),
+        'post_type' => $faker->word(),
+        'post_category' => $faker->word(),
 
     ];
 });

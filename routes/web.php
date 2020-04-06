@@ -18,10 +18,13 @@ Route::get('/', function () {
 });*/
 
 
-
 Route::get('/', 'HomeController@index');
-Route::get('/Articles', 'ArticlesController@index');
-Route::get('/Articles/{post_name}', 'ArticlesController@show');
+//Route::get('/Articles/{post_name}', 'ArticlesController@show');
+//Route::get('/Articles', 'ArticlesController@index');
+Route::resource('Articles', 'ArticlesController');
+
+
+
 
 Route::get('/Contact', [
     'as'=> 'contact_path',
