@@ -13,6 +13,7 @@
     </div>
   </section>
     <!-- end section -->
+
     <div>
      @if (session()->has('success'))
          <div class="alert alert-success" role="alert">

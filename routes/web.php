@@ -17,24 +17,40 @@ Route::get('/', function () {
     return view('welcome');
 });*/
 
+Route::group(['middleware' => ['web']], function () {
 
-Route::get('/', 'HomeController@index');
-//Route::get('/Articles/{post_name}', 'ArticlesController@show');
-//Route::get('/Articles', 'ArticlesController@index');
-Route::resource('Articles', 'ArticlesController');
+    //Authentification routes
+    Route::get('auth/login', 'Auth\LoginController@showLoginForm');
+    Route::post('auth/login', 'Auth\LoginController@login');
+    Route::get('auth/logout', 'Auth\LoginController@logout');
+
+    //Registration routes
+    Route::get('auth/register', 'Auth\RegisterController@showRegistrationForm');
+   // Route::post('auth/register', 'Auth\RegisterController@postRegister');
 
 
-
-
-Route::get('/Contact', [
+    //Route::get('/Articles/{post_name}', 'ArticlesController@show');
+    //Route::get('/Articles', 'ArticlesController@index');
+    Route::get('/', 'HomeController@index');
+    Route::resource('Articles', 'ArticlesController');
+   // Route::get('About', 'AboutController@index');
+    Route::get('/Contact', [
+        'as'=> 'contact_path',
+        'uses' => 'ContactController@create'
+        ] );
+    Route::post('/Contact', [
     'as'=> 'contact_path',
-    'uses' => 'ContactController@create'
-    ] );
+    'uses' => 'ContactController@store'
 
-Route::post('/Contact', [
-'as'=> 'contact_path',
-'uses' => 'ContactController@store'
-] );
+    ] );
+    Route::get('Blog', ['uses' => 'BlogController@getIndex', 'as' => 'Blog.getIndex'] );
+
+
+});
+
+
+
+
 
 
 
