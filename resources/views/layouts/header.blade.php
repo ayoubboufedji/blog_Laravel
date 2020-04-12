@@ -62,7 +62,7 @@
                         <button href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Sing in</a>
-                            <a class="dropdown-item" href="#">About</a>
+                            <a class="dropdown-item" href="{{ route('Articles.index') }}">Posts</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Sign out</a>
                         </div>
@@ -72,6 +72,8 @@
 	    </div>
       </nav>
     <!-- END nav -->
+{{ Auth::check() ? "Logged in" : "Logged out" }}
+
     @yield ( 'contents' )
 
 <div>

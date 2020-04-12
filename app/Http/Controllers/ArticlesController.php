@@ -151,10 +151,10 @@ class ArticlesController extends Controller
     public function destroy($id)
     {
 
-
         $post = Post::find($id); //get first post with post_name == $post_name
         $post -> delete();
         return redirect()->route('Articles.index')->with('success','The post was succesfully deleted!');
 
     }
+
 }
