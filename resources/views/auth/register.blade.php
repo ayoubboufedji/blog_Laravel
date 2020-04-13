@@ -1,140 +1,130 @@
 @extends('layouts/header')
 
 @section('contents')
-<section class="hero-wrap hero-wrap-3 js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
       <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
         <div class="col-md-9 ftco-animate pb-5 text-center">
-          <h1 class="mb-3 bread">Your Blog</h1>
-          <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>About <i class="ion-ios-arrow-forward"></i></span></p>
+          <h1 class="mb-3 bread">Creat Your Account Here</h1>
+          <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Register <i class="ion-ios-arrow-forward"></i></span></p>
         </div>
       </div>
     </div>
   </section>
     <!-- end section -->
 
-<div class="row">
-    <div class="col-md-6 col-md-offset-3">
-
-            {!! Form::open() !!}
-
-            {!! Form::label('name','Name:') !!}
-            {!! Form::text('name', null, array('class' => 'form-control')) !!}
-
-            {!! Form::label('email','Email:') !!}
-            {!! Form::text('email', null, array('class' => 'form-control')) !!}
-
-            {!! Form::label('password','Password:') !!}
-            {!! Form::text('password', null, ['class' => 'form-control']) !!}
-
-
-            {!! Form::label('password_confirmation','Confirme Password:') !!}
-            {!! Form::text('password_confirmation',null, ['class' => 'form-control']) !!}
-
-            <br>
-            {!! Form::checkbox('remember') !!}{!! Form::label('remember','Remember Me:') !!}
-
-            <br>
-            {!! Form::submit('Login', array('class' => 'btn btn-primary')) !!}
-
-
-          <!--  {!! Form::label('post_type','Post Type:') !!}
-            {!! Form::text('post_type', null, array('class' => 'form-control', 'required' => '', 'maxlenght' => '250' )) !!}
-
-            {!! Form::label('post_status','Post Status:') !!}
-            {!! Form::text('post_status', null, array('class' => 'form-control', 'required' => '', 'maxlenght' => '250' )) !!}
-
-            {!! Form::label('post_content','Post Content:') !!}
-            {!! Form::textarea('post_content', null, array('class' => 'form-control', 'required' => '' )) !!} -->
-
-
-            {!! Form::close()  !!}
-
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
-
-    <div class="container">
-        <div class="row">
-            <form class="col s12" id="reg-form">
-              <div class="row">
-                <div class="input-field col s6">
-                  <input id="first_name" type="text" class="validate" required>
-                  <label for="first_name">First Name</label>
-                </div>
-                <div class="input-field col s6">
-                  <input id="last_name" type="text" class="validate" required>
-                  <label for="last_name">Last Name</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <input id="email" type="email" class="validate" required>
-                  <label for="email">Email</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <input id="password" type="password" class="validate" minlength="6" required>
-                  <label for="password">Password</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s6">
-                  <div class="gender-male">
-                    <input class="with-gap" name="gender" type="radio" id="male" required />
-                    <label for="male">Male</label>
-                  </div>
-                  <div class="gender-female">
-                    <input class="with-gap" name="gender" type="radio" id="female" required />
-                    <label for="female">Female</label>
-                  </div>
-                </div>
-
-                <div class="input-field col s6">
-                  <button class="btn btn-large btn-register waves-effect waves-light" type="submit" name="action">Register
-                    <i class="material-icons right">done</i>
-                  </button>
-                </div>
-              </div>
-            </form>
+    <div>
+     @if (session()->has('success'))
+         <div class="alert alert-success" role="alert">
+          {{ session()->get('success') }}
           </div>
-          <a title="Login" class="ngl btn-floating btn-large waves-effect waves-light red"><i class="material-icons">input</i></a>
+     @endif
+    </div>
+    @if (!session()->has('message'))
+
+    <div class="container" style="padding-top : 20px">
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">{{ __('Register') }}</div>
+
+                        <div class="card-body">
+                            <form method="POST" action="{{ route('register') }}">
+                                @csrf
+
+                                <div class="form-group row">
+                                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Register') }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
 
-    -->
+</div>
+
+@endif
+
+@section('scripts')
 
 
-
-
-
-
-
-
-
-
-
-
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="js/google-map.js"></script>
+<script src="js/main.js"></script>
 
 @endsection
+@endsection
+
+
+

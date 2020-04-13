@@ -55,24 +55,42 @@
 	          <li class="nav-item {{ Request::is('/Articles') ? "active" : "" }}"><a href="/Articles" class="nav-link">Articles</a></li>
 	          <li class="nav-item"><a href="about.html" class="nav-link">Team</a></li>
 	          <li class="nav-item {{ Request::is('Contact') ? "active" : "" }}"><a href="Contact" class="nav-link">Contact</a></li>
-	        </ul>
+              <!--<li class="nav-item"><a href="{{ route('register') }}" class="nav-link">Register</a></li> -->
 
-	      <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <button href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account<span class="caret"></span></button>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Sing in</a>
-                            <a class="dropdown-item" href="{{ route('Articles.index') }}">Posts</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Sign out</a>
-                        </div>
-                    </li>
-                  </ul>
-                </div>
-	    </div>
-      </nav>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                @if (Auth::guest())
+                <a class="dropdown-item" href="{{ route('login') }}">Login</a>
+                @else
+                <li class="dropdown">
+                    <button href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{ Auth::user()->name }}<span class="caret"></span></button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item dropdown-item-right">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </a>
+                <a class="dropdown-item" href="{{ route('Articles.index') }}">Posts</a>
+                <div class="dropdown-divider"></div>
+                <a href="Contact" class="dropdown-item">Contact Us</a>
+                @endif
+
+                <!--<a class="dropdown-item" href="{{ route('logout') }}">Sign out</a>-->
+
+            </div>
+        </li>
+     </ul>
+    </div>
+  </div>
+ </nav>
     <!-- END nav -->
-{{ Auth::check() ? "Logged in" : "Logged out" }}
 
     @yield ( 'contents' )
 

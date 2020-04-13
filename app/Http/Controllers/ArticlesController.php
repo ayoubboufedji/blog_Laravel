@@ -13,6 +13,13 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function index()
     {    // create a variable and store all the blog posts in it from the data base
 
