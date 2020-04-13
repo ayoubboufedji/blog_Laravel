@@ -43,7 +43,6 @@ Route::group(['middleware' => ['web']], function () {
     ] );
     Route::get('Blog', ['uses' => 'BlogController@getIndex', 'as' => 'Blog.getIndex'] );
 
-
 });
 
 
@@ -51,8 +50,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Password routes
+
+Route::post('/postforgot', 'Auth\ForgotPasswordController@postforgot')->name('postforgot');
 
 
+
+
+Route::post('/verifytoken', 'Auth\VerificationTokenController@verifytoken')->name('verifytoken');
 
 
 Route::get('admin/home', function(){
