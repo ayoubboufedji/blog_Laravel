@@ -35,6 +35,6 @@ class ContactController extends Controller
         Mail::to('ayoubboufedjitwi@gmail.com')->send($mailable);
 
         //redirect
-        return redirect('Contact')->with('message','Nous vous repondrons dans les plus bréfs delais!');
+        return redirect('Contact')->with('message','We Will Answer As Soon As Possible!');
 }
 }

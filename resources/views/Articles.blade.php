@@ -49,8 +49,14 @@
                        <td>{{ substr($posts->post_content, 0, 30) }}{{ strlen($posts->post_content) > 30 ? "..." : "" }}</td>
                        <td>{{ date('M j, Y', strtotime($posts->created_at)) }}</td>
 
-                    <td><a href="{{ route('Articles.show', $posts->id) }}" class="btn btn-outline-dark btn-sm">View</a> <a href="{{ route('Articles.edit', $posts->id) }}" class="btn btn-outline-dark btn-sm">Edit</a></td>
+                       @if (($posts->user_id) == (Auth::user()->id))
+                        <td><a href="{{ route('Articles.show', $posts->id) }}" class="btn btn-outline-dark btn-sm">View</a>
+                            <a href="{{ route('Articles.edit', $posts->id) }}" class="btn btn-outline-dark btn-sm">Edit</a></td>
+                    @else
+                        <td><a href="{{ route('Articles.show', $posts->id) }}" class="btn btn-outline-dark btn-sm">View</a></td>
+                    @endif
                     </tr>
+
                     @endforeach
             </tbody>
         </table>

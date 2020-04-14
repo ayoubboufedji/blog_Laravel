@@ -43,8 +43,15 @@ Route::group(['middleware' => ['web']], function () {
     ] );
     Route::get('Blog', ['uses' => 'BlogController@getIndex', 'as' => 'Blog.getIndex'] );
 
-});
 
+    //comments
+
+
+});
+Route::post('comments/{post_id}', ['uses' => 'CommentsController@store',
+     'as' => 'comments.store',
+     'middleware'=>'auth'
+     ]);
 
 Auth::routes();
 

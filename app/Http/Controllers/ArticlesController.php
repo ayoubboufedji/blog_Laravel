@@ -49,7 +49,7 @@ class ArticlesController extends Controller
     {
         // validate data
         $this->validate($request, array(
-           'post_author' => 'required|min:3',
+           'user_id' => 'required|min:1',
           // 'slug' => 'required|min:3|max:255|alpha_dash',
            'post_title' => 'required|max:255',
            'post_content' => 'required'
@@ -62,7 +62,7 @@ class ArticlesController extends Controller
        $post->post_category = $request->post_category;
        $post->post_status = $request->post_status;
        $post->post_date = now();
-       $post->post_author = $request->post_author;
+       $post->user_id = $request->user_id;
        $post->post_title = $request->post_title;
        //$post->slug = $request->slug;
        $post->post_content = $request->post_content;
@@ -139,7 +139,7 @@ class ArticlesController extends Controller
         $post->post_category = $request->input('post_category');
         $post->post_status = $request->input('post_status');
         $post->post_date = now();
-        $post->post_author = $request->input('post_author');
+        $post->user_id = $request->input('user_id');
 
         $post->save();
         return redirect()->route('Articles.show', $post->id)->with('success','This post was succesfully saved!');

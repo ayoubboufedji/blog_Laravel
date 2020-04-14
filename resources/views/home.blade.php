@@ -6,7 +6,7 @@
     <div class="container">
       <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
         <div class="col-md-9 ftco-animate pb-5 text-center">
-          <h1 class="mb-3 bread">Welcom To Home</h1>
+          <h1 class="mb-3 bread">Welcome To Home</h1>
           <!--<p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Register <i class="ion-ios-arrow-forward"></i></span></p>
           --></div>
       </div>
@@ -34,7 +34,7 @@
 
             You are logged in!
         </div>
-</div>
+ </div>
 
 @endif
 

@@ -16,7 +16,7 @@
 
 
   @if (!session()->has('message'))
-<div class="div">
+<div class="container" style="margin-top:50px;">
 <div class="row">
  <div class="col-md-8 col-md-offset-2">
      <h1>Creat New Post</h1>
@@ -24,8 +24,8 @@
 
      {!! Form::open(array('route' => 'Articles.store', 'data-parsley-validate' => '')) !!}
 
-     {!! Form::label('post_author','Your Name:') !!}
-     {!! Form::text('post_author', null, array('class' => 'form-control', 'required' => '', 'maxlenght' => '250' )) !!}
+     {!! Form::label('user_id','Your Id:') !!}
+     {!! Form::text('user_id', null, array('class' => 'form-control', 'required' => '', 'maxlenght' => '250' )) !!}
 
      {!! Form::label('post_name','Post Name:') !!}
      {!! Form::text('post_name', null, array('class' => 'form-control ', 'required' => '', 'maxlenght' => '250' )) !!}

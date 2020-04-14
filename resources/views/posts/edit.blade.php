@@ -13,6 +13,7 @@
       </div>
     </div>
   </section>
+  @if (($post->user_id) == (Auth::user()->id))
   <div class="container" style="padding-top : 30px">
 
     <div class="row">
@@ -56,10 +57,10 @@
                             {!! Html::linkRoute('Articles.show', 'Cancel', array($post->id), array('class' => 'btn btn-danger btn-block')) !!}
                             <!-- <a href="#" class="btn btn-primary btn-block">Edit</a> -->
                       </div>
-                      <div class="col-sm-6">
-                            {{ Form::submit('Save changes', ['class' => 'btn btn-success btn-block']) }}
-                           <!--  <a href="#" class="btn btn-danger btn-block">Delete</a> -->
-                       </div>
+                        <div class="col-sm-6">
+                              {{ Form::submit('Save changes', ['class' => 'btn btn-success btn-block']) }}
+                            <!--  <a href="#" class="btn btn-danger btn-block">Delete</a> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -84,6 +85,12 @@
 <script src="js/google-map.js"></script>
 <script src="js/main.js"></script>
 @endsection
+
+@else
+<div class="container" style="padding-top : 30px">
+<h1>Sorry You Can not Edit This Post</h1>
+</div>
+@endif
 
 @endsection
 
