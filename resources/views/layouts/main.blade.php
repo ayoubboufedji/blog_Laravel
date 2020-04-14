@@ -108,7 +108,6 @@
           			<div class="text">
 	          			<p class="aa">A book holds a house of gold.</p>
                   <p class="aa">.وخير جليس في الأنام كتاب</p>
-                  <p>Ce qui est arrivé est ce qui s'est passé. Et, quand plus rien n'arrive, l'histoire est vraiment hors de portée de l'écriture et de la lecture.</p>
 	          			<div class="mouse">
 										<a href="#" class="mouse-icon">
 											<div class="mouse-wheel"><span class="ion-ios-arrow-round-down"></span></div>

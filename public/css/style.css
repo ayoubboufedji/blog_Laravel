@@ -394,7 +394,7 @@
    .img-fluide {
     padding-left: 0px;
     width: 105%;
-    height: 45%; }
+    height: 60%; }
 
   .img-thumbnail {
     padding: 0.25rem;
@@ -9269,3 +9269,50 @@
     100% {
       stroke-dasharray: 89, 200;
       stroke-dashoffset: -136px; } }
+
+
+
+      .comment {
+        margin-bottom: 45px;
+    }
+
+    .author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            float: left;
+
+        }
+
+        .author-name {
+            float: left;
+            margin: 5px;
+            margin-left: 15px;
+
+        }
+
+        .author-time {
+            font-size: 11px;
+            font-style: italic;
+            color: #aaa;
+        }
+
+        .author-name>h5 {
+            margin: 5px 0px;
+        }
+
+        .comment-content {
+            clear: both;
+            margin-left: 65px;
+            font-size: 16px;
+            line-height: 1.3em;
+        }
+
+        .comments-title {
+            margin-bottom:45px;
+        }
+
+        .comments-title>svg {
+            margin-right: 15px;
+        }
+

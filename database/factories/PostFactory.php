@@ -14,7 +14,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Post::class, function (Faker $faker) {
     $users = App\User::pluck('id')->toArray();
     return [
-        'post_author' => $faker->randomElement($users),
+        'user_id' => $faker->randomElement($users),
         'post_date' => now(),
         'post_content' => $faker->paragraph(),
         //'slug' => $faker->text(),
