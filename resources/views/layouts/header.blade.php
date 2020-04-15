@@ -52,9 +52,9 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item {{ Request::is('/') ? "active" : "" }}"><a href="/" class="nav-link">Home</a></li>
-	          <li class="nav-item {{ Request::is('/Articles') ? "active" : "" }}"><a href="/Articles" class="nav-link">Articles</a></li>
+	          <li class="nav-item {{ Request::is('Articles') ? "active" : "" }}"><a href="{{ route('Articles.index') }}" class="nav-link">Articles</a></li>
 	          <li class="nav-item"><a href="about.html" class="nav-link">Team</a></li>
-	          <li class="nav-item {{ Request::is('Contact') ? "active" : "" }}"><a href="Contact" class="nav-link">Contact</a></li>
+	          <li class="nav-item {{ Request::is('Contact') ? "active" : "" }}"><a href="{{ route('contact_path') }}" class="nav-link">Contact</a></li>
               <!--<li class="nav-item"><a href="{{ route('register') }}" class="nav-link">Register</a></li> -->
 
             </ul>
@@ -67,6 +67,7 @@
                     <button href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello {{ Auth::user()->name }}<span class="caret"></span></button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item dropdown-item-right">
+                            <span>Your Id : <strong>{{ Auth::user()->id }}</strong></span>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">

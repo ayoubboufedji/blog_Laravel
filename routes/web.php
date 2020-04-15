@@ -31,6 +31,8 @@ Route::group(['middleware' => ['web']], function () {
     //Route::get('/Articles', 'ArticlesController@index');
     Route::get('/', 'HomeController@welcome');
     Route::resource('Articles', 'ArticlesController');
+    Route::get('Articles/{id}/delete', ['uses' => 'ArticlesController@delete', 'as' => 'Articles.delete']);
+
    // Route::get('About', 'AboutController@index');
     Route::get('/Contact', [
         'as'=> 'contact_path',
@@ -52,6 +54,12 @@ Route::post('comments/{post_id}', ['uses' => 'CommentsController@store',
      'as' => 'comments.store',
      'middleware'=>'auth'
      ]);
+
+Route::get('comments/{id}/edit', ['uses' => 'CommentsController@edit', 'as' => 'comments.edit']);
+Route::put('comments/{id}', ['uses' => 'CommentsController@update', 'as' => 'comments.update']);
+Route::delete('comments/{id}', ['uses' => 'CommentsController@destroy', 'as' => 'comments.destroy']);
+Route::get('comments/{id}/delete', ['uses' => 'CommentsController@delete', 'as' => 'comments.delete']);
+
 
 Auth::routes();
 

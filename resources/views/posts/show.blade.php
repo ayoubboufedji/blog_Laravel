@@ -39,11 +39,10 @@
                     <div class="col-lg-12 ftco-animate">
                         <p class="mb-1">
                         <h2 class="mb-3">{{ $post->post_title }}</h2>
-                        <img src="{{ asset('images/image_1.jpg') }}" alt="" class="img-fluide">
+                        <img src="{{ asset('images/image_1.jpg') }}" alt="">
                       </p>
-                      <p>{{  $post->post_content }}</p>
+                      <p style="margin-bottom:80px;">{!!  $post->post_content !!}</p>
                     </div>
-
                         <div class="col-md-12">
                             <h3 class="comments-title"><svg class="bi bi-chat-square-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M2 0a2 2 0 00-2 2v8a2 2 0 002 2h2.5a1 1 0 01.8.4l1.9 2.533a1 1 0 001.6 0l1.9-2.533a1 1 0 01.8-.4H14a2 2 0 002-2V2a2 2 0 00-2-2H2z" clip-rule="evenodd"/>
@@ -59,16 +58,16 @@
                                     </div>
                                 </div>
                                 <div class="comment-content">
-                                {{ $comment->comment }}
+                                {!! $comment->comment !!}
                                </div>
                                 </div>
-                                @if ($comment->post_id == $post->id)
+                               @if ($comment->user_id == Auth::user()->id)
                                 <div class="comment col-md-4" style="margin-top:80px;">
-                                    <a href="" class="btn btn-xs btn-primary"><svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <a href="{{ route('comments.edit', $comment->id) }}" class="btn btn-xs btn-info"><svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"/>
                                         <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 00.5.5H4v.5a.5.5 0 00.5.5H5v.5a.5.5 0 00.5.5H6v-1.5a.5.5 0 00-.5-.5H5v-.5a.5.5 0 00-.5-.5H3z" clip-rule="evenodd"/>
                                       </svg></a>
-                                      <a href="" class="btn btn-xs btn-primary"><svg class="bi bi-trash" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                      <a href="{{ route('comments.delete', $comment->id) }}" class="btn btn-xs btn-danger"><svg class="bi bi-trash" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/>
                                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" clip-rule="evenodd"/>
                                       </svg></a>
@@ -78,10 +77,21 @@
                             @endforeach
                         </div>
 
-                    <div id="comment-form" class="col-md-12" style="margin-top:100px;">
+                    <div id="comment-form" class="col-md-12" style="margin-top:100px; margin-bottom:100px;">
                         {!! Form::open(['route' => ['comments.store', $post->id], 'method' => 'POST']) !!}
-                                @csrf
-                                <div class="row">
+                        @csrf
+
+                                                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
+                             <div class="row">
                                 <div class="col-md-6">
                                     {!! Form::label('name', 'Name:') !!}
                                     {!! Form::text('name', null, ['classe' => 'form-control']) !!}
@@ -123,10 +133,7 @@
                         </div>
 
                         <div class="col-sm-6">
-                            {!! Form::open(['route' => ['Articles.destroy', $post->id], 'method' => 'DELETE']) !!}
-                            {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) }}
-                            <!--  <a href="#" class="btn btn-danger btn-block">Delete</a> -->
-                             {!! Form::close() !!}
+                            {!! Html::linkRoute('Articles.delete', 'DELETE', array($post->id), array('class' => 'btn btn-danger btn-block')) !!}
                         </div>
                     </div>
                     <div class="col-md-12">

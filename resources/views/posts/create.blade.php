@@ -23,7 +23,17 @@
      <hr>
 
      {!! Form::open(array('route' => 'Articles.store', 'data-parsley-validate' => '')) !!}
-
+     @csrf
+     @if ($errors->any())
+     @dd($errors){{-- for check error bag --}}
+     <div class="alert alert-danger">
+         <ul>
+             @foreach ($errors->all() as $message)
+                 <li>{{ $message }}</li>
+             @endforeach
+         </ul>
+     </div>
+ @endif
      {!! Form::label('user_id','Your Id:') !!}
      {!! Form::text('user_id', null, array('class' => 'form-control', 'required' => '', 'maxlenght' => '250' )) !!}
 
@@ -70,6 +80,8 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="js/google-map.js"></script>
 <script src="js/main.js"></script>
+
+
 
 @endsection
 <hr>

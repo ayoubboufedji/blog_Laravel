@@ -46,7 +46,7 @@
                     <tr>
                        <th>{{ $posts->id }}</th>
                        <td>{{ substr($posts->post_title, 0, 20) }}{{ strlen($posts->title) > 20 ? "..." : "" }}</td>
-                       <td>{{ substr($posts->post_content, 0, 30) }}{{ strlen($posts->post_content) > 30 ? "..." : "" }}</td>
+                       <td>{{ substr(strip_tags($posts->post_content), 0, 30) }}{{ strlen(strip_tags($posts->post_content)) > 30 ? "..." : "" }}</td>
                        <td>{{ date('M j, Y', strtotime($posts->created_at)) }}</td>
 
                        @if (($posts->user_id) == (Auth::user()->id))
