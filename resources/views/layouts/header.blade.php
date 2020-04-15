@@ -61,7 +61,6 @@
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item {{ Request::is('/') ? "active" : "" }}"><a href="/" class="nav-link">Home</a></li>
 	          <li class="nav-item {{ Request::is('Articles') ? "active" : "" }}"><a href="{{ route('Articles.index') }}" class="nav-link">Articles</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">Team</a></li>
 	          <li class="nav-item {{ Request::is('Contact') ? "active" : "" }}"><a href="{{ route('contact_path') }}" class="nav-link">Contact</a></li>
               <!--<li class="nav-item"><a href="{{ route('register') }}" class="nav-link">Register</a></li> -->
 
@@ -103,18 +102,6 @@
 
     @yield ( 'contents' )
 
-<div>
-    @if (session()->has('message'))
-     <div class="alert alert-success" role="alert">
-      {{ session()->get('message') }}
-      </div>
-     @endif
- @if (session()->has('success'))
-     <div class="alert alert-success" role="alert">
-      {{ session()->get('success') }}
-      </div>
- @endif
-</div>
 
 
 <hr>
@@ -135,34 +122,8 @@
                   </ul>
                 </div>
               </div>
-              <div class="col-md">
-                 <div class="ftco-footer-widget mb-4">
-                  <h2 class="ftco-heading-2">latest News</h2>
-                  <div class="block-21 mb-4 d-flex">
-                      <a class="img mr-4 rounded" style="background-image: url({{ asset('images/bg_1.jpg') }});"></a>
-                      <div class="text">
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-                        <div class="meta">
-                          <div><a href="#"></span> Oct. 16, 2019</a></div>
-                          <div><a href="#"></span> Admin</a></div>
-                          <div><a href="#"></span> 19</a></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="block-21 mb-4 d-flex">
-                      <a class="img mr-4 rounded" style="background-image: url(images/image_2.jpg);"></a>
-                      <div class="text">
-                        <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-                        <div class="meta">
-                          <div><a href="#"></span> Oct. 16, 2019</a></div>
-                          <div><a href="#"></span> Admin</a></div>
-                          <div><a href="#"></span> 19</a></div>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-              </div>
-              <div class="col-md">
+
+              <div class="col-md" style="margin-left:80px;">
                 <div class="ftco-footer-widget mb-4 ml-md-5">
                   <h2 class="ftco-heading-2">Information</h2>
                   <ul class="list-unstyled">

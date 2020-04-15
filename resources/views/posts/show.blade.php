@@ -7,6 +7,7 @@
       <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
         <div class="col-md-9 ftco-animate pb-5 text-center">
           <h1 class="mb-3 bread">Your Blog</h1>
+          <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span> Post <i class="ion-ios-arrow-forward"></i></span></p>
         </div>
       </div>
     </div>
@@ -37,9 +38,8 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-lg-12 ftco-animate">
-                        <p class="mb-1">
+                        <p class="mb-1" style="margin-top:80px;">
                         <h2 class="mb-3">{{ $post->post_title }}</h2>
-                        <img src="{{ asset('images/image_1.jpg') }}" alt="">
                       </p>
                       <p style="margin-bottom:80px;">{!!  $post->post_content !!}</p>
                     </div>
@@ -142,11 +142,9 @@
                       <div class="block-21 mb-4 d-flex">
                         <a class="blog-img mr-4" style="background-image: url({{ asset('images/image_1.jpg') }});"></a>
                         <div class="text">
-                          <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                          <h3 class="heading"><a href="/">Even the all-powerful Pointing has no control about the blind texts</a></h3>
                           <div class="meta">
-                            <div><a href="#"><span class="icon-calendar"></span>{{ date('M j, Y', strtotime($post->created_at)) }}</a></div>
-                            <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                            <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                            <div><a href="/"><span class="icon-calendar"></span>{{ date('M j, Y', strtotime($post->created_at)) }}</a></div>
                           </div>
                         </div>
                       </div>
