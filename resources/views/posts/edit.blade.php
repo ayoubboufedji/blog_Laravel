@@ -39,7 +39,7 @@
         {!! Form::text('post_status', null, array('class' => 'form-control', 'required' => '', 'maxlenght' => '250' )) !!}
 
         {!! Form::label('post_content','Post Content:') !!}
-        {!! Form::textarea('post_content', null, array('class' => 'form-control', 'required' => '' )) !!}
+        {!! Form::textarea('post_content', null, array('class' => 'form-control')) !!}
         </div>
             <div class="col-md-4">
                 <div class="card card-body bg-light">

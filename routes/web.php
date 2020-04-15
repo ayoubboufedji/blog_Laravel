@@ -80,3 +80,7 @@ Route::get('admin/home', function(){
     return view('admin/home');
 
     });
+
+
+    Route::get('login/google', 'Auth\LoginController@redirectToProvider');
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');

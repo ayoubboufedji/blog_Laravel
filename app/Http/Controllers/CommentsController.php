@@ -36,7 +36,6 @@ class CommentsController extends Controller
             $post = Post::find($post_id);
             $user = User::find($post_id);
 
-
             $comment = new Comment();
             $comment->name = $request->input('name');
             $comment->email = $request->input('email');
@@ -45,7 +44,7 @@ class CommentsController extends Controller
             $comment->user_id = $request->input('user_id');
             $comment->approved = true;
             $comment->post()->associate($post);
-            $comment->user()->associate($user);
+            $comment->user()->associate($post);
 
 
             $comment->save();

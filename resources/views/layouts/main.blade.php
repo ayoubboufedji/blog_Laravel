@@ -16,6 +16,14 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
 
+    <!--- ////////////////////Tinymce editor -->
+    <script src="https://cdn.tiny.cloud/1/u1gb8fd0u9gw9w5di32w07ytcghknsa1m7pmwhcp1g512hmw/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({
+            selector: 'textarea',
+             plugins: 'link code',
+             menubar: false,
+ });</script>
+    <!--- //////////////////// -->
 
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}">

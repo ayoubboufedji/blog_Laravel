@@ -53,7 +53,7 @@
      {!! Form::text('post_status', null, array('class' => 'form-control', 'required' => '', 'maxlenght' => '250' )) !!}
 
      {!! Form::label('post_content','Post Content:') !!}
-     {!! Form::textarea('post_content', null, array('class' => 'form-control', 'required' => '' )) !!}
+     {!! Form::textarea('post_content', null, array('class' => 'form-control')) !!}
 
      {{ Form::submit('Creat Post', ['class' => 'btn btn-success btn-block','style' => 'margin-top: 20px;']) }}
 
