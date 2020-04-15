@@ -14,6 +14,13 @@
     </div>
   </section>
 
+  <div>
+    @if (session()->has('success'))
+        <div class="alert alert-success" role="alert">
+         {{ session()->get('success') }}
+         </div>
+    @endif
+   </div>
 
   @if (!session()->has('message'))
 <div class="container" style="margin-top:50px;">

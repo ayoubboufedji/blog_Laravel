@@ -1,78 +1,148 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Titre du projet
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Projet de création d’une application web avec le framework PHP Laravel
 
-## About Laravel
+## Commencer
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Ces instructions vous fourniront une copie du projet opérationnel sur votre ordinateur local à des fins de développement et de test. 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Conditions préalables
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+De quoi avez-vous besoin pour avoir accès au blog ?
 
-## Learning Laravel
+```
+Vous devez avoir une version >= PHP 7.2.10  (https://www.php.net/downloads.php)
+Pour verifier votre version de PHP, tapez la commande : 
+```	
+```
+php -v
+```
+```
+Vous devez avoir composer installé sur votre machine (https://getcomposer.org/download/)
+```
+```
+Vous devez avoir Git installé sur votre machine (https://gist.github.com/derhuerst/1b15ff4652a867391f03)
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Installation & configuration
+ 
+ Afin de pouvoir ouvrir notre blog sur votre serveur local (http://localhost:8000)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1-Trouvez un emplacement sur votre ordinateur où vous souhaitez stocker le projet.
+Ensuite, exécutez la commande suivante, qui tirera le projet de github et en créera une copie sur votre ordinateur local dans le répertoire choisi:
+```
+git clone https://https://github.com/ayoubboufedji/blog_Laravel
+```
 
-## Laravel Sponsors
+2- Une fois le projet est copié, ouvrez le, ouvrez le Terminal ou l'Invité de commande (selon votre systéme d'exploitation) et placez-vous dans le repertoire choisi.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+3- Installer composer dans le projet en tapant la commande suivante dans le Terminal/Invité de commande ouvert
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+```
+composer install
+```
+4- Copier le fichier .env.example dans .env en tappant la commande suivante:
+```
+cp .env.example .env
+```
 
-## Contributing
+5- Dans le Terminal/Invité de commande lancez la commande suivante 
+```
+php artisan key:generate
+```
+6- Créez un fichier database.sqlite dans le répertoire database du projet récupéré
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+7- Ouvrez le fichier .env et faites les modifications suivantes.
+```
+DB_CONNECTION=sqlite
+#DB_HOST=127.0.0.1
+#DB_PORT=3306
+DB_DATABASE=Votre chemin\PojetLaravel-master\database\database.sqlite
+DB_USERNAME=root
+```
+8- Lancez les migrations en tapant la commande suivante 
+```
+php artisan migrate
+```
+9- Remplissez les tables de la base de données par des données aléatoires en tapant la commande suivante
+```
+php artisan migrate:fresh --seed -v
+```
+10- Lancez le serveur pour accéder au projet sur (http://localhost:8000)en tappant la commande suivante
+```
+php artisan serve
+```
+11- Vous pouvez accéder à la base de données à l’url suivant:
 
-## Code of Conduct
+[Base de données](http://127.0.0.1:8000/phpliteadmin.php)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Lancer les tests / Les fonctionnalites:
 
-## Security Vulnerabilities
+## Le menu Home :
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Constitue la page d'accueil du blog avec:
+- Une barre de navigation contenant l'intitulé de notre blog "ReadTOLead" ainsi que les rubriques suivantes : Home, Articles, Contact,Team, Login. Cette barre est un menu déroulant réaisé avec JavaScript.
+- Un message d'accueil 
+- Les trois premiers Articles présents dans notre base de données accessibles qu'après authentification.
+- Le bas de page contient  les trois icones (facebook, twitter, et instagram) permettant de se rendre sur les pages correspondantes ainsi que les coordonnées de l'administrateur du blog.
 
-## License
+# L'authentification : 
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Afin que vous puissiez lire, modifier ou poster des articles sur notre blog, vous devez être membre dans notre blog.
+En cliquant sur Login, vous pouvez vous inscrire en remplissant notre formulaire d'inscription. Dans ce cas, la table users sera mis à jours dans la base de données.
+
+Une fois isncrit, vous n'avez qu'à saisir vos identifiants pour vous connecter. Le bouton Login sera remplacé par "Hello + Prénom+Nom"
+Si vous souhaitez vous déconnecter, cliquez sur la flèche à droite de votre nom ensuite sur Logout.
+
+Si vous oubliez votre mot de passe, cliquez sur "forgot your password?", saisissez ensuite votre adresse mail, un mail vous sera envoyé dans l'immédiat contenant un lien vous permettant de réinitialiser votre mot de passe.
+
+Si vous souhaitez vous désinscrire, vous pouvez nous envoyer un message en replissant le formualaire de contact.
+
+### Le menu Articles : 
+
+En cliquant sur "Articles", tous les Articles présents dans la base de données seront affichés (après authentification)
+
+Vous pouvez également avoir accés à la publciation d'un article sur le blog en cliquant sur la flèche à droite de votre nom, une fois connecté, ensuite cliquez sur posts. 
+
+### CRUD Articles : 
+Lorsque vous vous connectez un Id va s'afficher sur le menu déroulant sous votre nom, cet Id est très important pour votre expérience sur notre site. en effet si vous voulez creer un poste vous cliquez sur le bouton "Creat New Post", vous allez être dirigé sur la une page ou vous devez remplir un formulaire en commençant par votre Id ensuite les champs qui sont obligatoires, si tout va bien un message de confirmation vous sera affiché.
+
+A droite de chaque article, on trouve deux bouton "VIEW" et "EDIT" permettant respectivement de lire ou de modifier l'article.
+L'option "EDIT" n'est possible que pour les articles dont vous êtes l'auteur.
+
+En cliquant sur "EDIT" à droite de l'article choisi, l'article sera affiché dans une zone de texte vous permettant d'apporter vos modifications.
+
+Trois boutons à droite "SAVE CHANGES" , "DELETE" et "CANCEL" vous permetteront d'enregistrer vos modifications, de supprimer l'article ou d'annuler les modifications apportées.
+
+### Commentaires : 
+Une fois dans la page article, si vous souhaitez laisser des commentaires sur le poste vous avez qu'a vous dirigé en bas de l'article dans la section commentaires ou vous pouvez écrire librement tout ce que vous voulez.
+La gestion des commentaires (Édit, Delete) est possible uniquement lorsque vos etes l'auteur de l'article en question.
+Le service GRAVATAR est utilisé dasn ce travail, il s'agit d'un service Web qui permet aux utilisateurs de télécharger un avatar en ligne personnel et de l'associer à leur adresse e-mail.
+
+
+### Le menu Contact : 
+
+La rublique contact permet d'afficher le formulaire de contact.
+Vous pouvez également cliquer sur la flèche à droite de votre nom, ensuite Contact us dans le menu affiché.
+Si vous êtes donc enregistré  dans la base de données et que vous êtes connecté, vous pouvez nous contacter en remplissant le formulaire de contact affiché.
+
+## Tinymce : 
+TinyMCE de Moxiecode est un outil JavaScript / HTML WYSIWYG (What You See Is What You Get), en logiciel Open Source sous licence LGPL. Il a la capacité de convertir les champs textarea HTML ou d’autres éléments HTML en éditeur de texte. cet outil est integré dans le present travail.
+
+
+## Construit avec
+
+* [Laravel] (https://laravel.com/) - PHP framework
+* [Bootstrap] (https://getbootstrap.com/) - framework CSS
+
+
+## Auteurs
+
+* **Ayoub BOUFEDJI**  [GithubAyoub](https://github.com/ayoubboufedji)
+* **Fatima BELLACHE**  [GithubFatima](https://github.com/fatimaBellache)
+* **Sihem BENAZOUAOU**  [GithubSihem](https://github.com/benazouaou)
+
+## Licence
+
+* Ce projet a été réalisé dans le cadre du projet Laravel -Master 2 DCISS Université de Grenoble Alpes-UGA-
+
