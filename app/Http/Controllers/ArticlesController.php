@@ -149,6 +149,20 @@ class ArticlesController extends Controller
         //redirect with flach data
     }
 
+
+
+    public function delete($id)
+    {
+        $posts = Post::find($id); //get first post with post_name == $post_name
+        return view('posts.delete',array( //Pass the post to the view
+            'post' => $posts
+        ));
+    }
+
+
+
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -157,6 +171,7 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
+
 
         $post = Post::find($id); //get first post with post_name == $post_name
         $post -> delete();

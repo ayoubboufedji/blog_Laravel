@@ -51,7 +51,7 @@
                   <div class="col-md-8">
                     <div class="post">
                       <h3>{{ $post->post_name }}</h3>
-                      <p>{{ substr($post->post_content, 0, 300) }}{{ strlen($post->post_content) > 300 ? "..."  : "" }}</p>
+                      <p>{{ substr(strip_tags($post->post_content), 0, 300) }}{{ strlen(strip_tags($post->post_content)) > 300 ? "..."  : "" }}</p>
                       <a href="{{ route('Articles.show', $post->id) }}" class="btn btn-primary">Read more</a>
 
                    </div>

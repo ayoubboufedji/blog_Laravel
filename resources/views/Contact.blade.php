@@ -58,7 +58,7 @@
 
                 <div class="form-group {{ $errors->has('message') ? 'has-error' : '' }}">
                     <label for="message" class="control-label">Message</label>
-                    <textarea classe="form-control" rows="10" cols="10" required="required" name="message" id="message">{{ Request::old('message') }}</textarea>
+                    <textarea classe="form-control" rows="10" cols="10" name="message" id="message">{{ Request::old('message') }}</textarea>
                     {!! $errors->first('message','<spanclasse="help-block">:message</span>') !!}
                     </div>
 

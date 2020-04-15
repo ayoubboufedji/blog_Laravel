@@ -21,9 +21,15 @@ class CreateCommentsTable extends Migration
             $table->text('comment');
             $table->boolean('approved');
             $table->integer('post_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+
 
            Schema::table('comments', function($table){
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+              });
+
+           Schema::table('comments', function($table){
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
               });
 
         });
@@ -39,5 +45,7 @@ class CreateCommentsTable extends Migration
         Schema::dropIfExists('comments');
 
         Schema::dropForeign(['post_id']);
+        Schema::dropForeign(['user_id']);
+
     }
 }
