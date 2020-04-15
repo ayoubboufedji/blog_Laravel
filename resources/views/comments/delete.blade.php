@@ -12,14 +12,13 @@
     </div>
   </section>
     <!-- end section -->
-<div class="container" style="margin-top:50px;">
-	<div class="row">
-		<div class="col-md-12 col-md-offset-2">
-			<h2 class="margin-left:500px;">DELETE THIS COMMENT?</h2>
+    <div class="container" style="margin-top:100px;">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-2">
+                <h2 style="margin-left:500px;">DELETE THIS COMMENT?</h2>
 			<p>
 				<strong>Author:</strong><h3>{{ $comment->name }}</h3><br>
-				<strong>Email:</strong><h3>{{ $comment->email }}</h3><br>
-				<strong>Comment:</strong> {!! $comment->comment !!}
+				<strong>Comment:</strong><h5 style="margin-top:30px;">{!! $comment->comment !!}</h5>
 			</p>
 
 			{{ Form::open(['route' => ['comments.destroy', $comment->id], 'method' => 'DELETE']) }}

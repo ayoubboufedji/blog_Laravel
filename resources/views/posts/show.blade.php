@@ -44,7 +44,8 @@
                       <p style="margin-bottom:80px;">{!!  $post->post_content !!}</p>
                     </div>
                         <div class="col-md-12">
-                            <h3 class="comments-title"><svg class="bi bi-chat-square-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <hr>
+                            <h3 class="comments-title" style="margin-top:30px;"><svg class="bi bi-chat-square-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M2 0a2 2 0 00-2 2v8a2 2 0 002 2h2.5a1 1 0 01.8.4l1.9 2.533a1 1 0 001.6 0l1.9-2.533a1 1 0 01.8-.4H14a2 2 0 002-2V2a2 2 0 00-2-2H2z" clip-rule="evenodd"/>
                               </svg>{{ $post->comments()->count() }} Comments</h3>
                             @foreach ($post->comments as $comment)
@@ -61,7 +62,7 @@
                                 {!! $comment->comment !!}
                                </div>
                                 </div>
-                               @if ($comment->user_id == Auth::user()->id)
+                               @if ($comment->user_id == $post->id)
                                 <div class="comment col-md-4" style="margin-top:80px;">
                                     <a href="{{ route('comments.edit', $comment->id) }}" class="btn btn-xs btn-info"><svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"/>
@@ -80,17 +81,6 @@
                     <div id="comment-form" class="col-md-12" style="margin-top:100px; margin-bottom:100px;">
                         {!! Form::open(['route' => ['comments.store', $post->id], 'method' => 'POST']) !!}
                         @csrf
-
-                                                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-
                              <div class="row">
                                 <div class="col-md-6">
                                     {!! Form::label('name', 'Name:') !!}
